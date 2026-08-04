@@ -1,0 +1,8 @@
+<resources>
+    <color name="key_bg">#2B2B2B</color>
+    <color name="key_bg_pressed">#4A4A4A</color>
+    <color name="key_bg_special">#1A1A1A</color>
+    <color name="key_text">#FFFFFF</color>
+    <color name="key_text_sub">#AAAAAA</color>
+    <color name="keyboard_bg">#000000</color>
+</resources>

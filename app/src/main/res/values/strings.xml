@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Ultra Keyboard</string>
+    <string name="setup_title">Ultra Keyboard — podešavanje</string>
+    <string name="setup_instructions">
+        Da bi tastatura radila, potrebno je da:\n\n
+        1) Uključiš je u Podešavanjima → Sistem → Tastature → Upravljanje tastaturama, i tamo omogućiš "Ultra Keyboard".\n\n
+        2) Kada kucaš tekst bilo gde (poruka, pretraga), pritisneš i držiš dugme za promenu tastature (ikonica planete/globusa na traci sa razmakom, ili dugo pritisni traku za razmak) i izabereš "Ultra Keyboard".\n\n
+        Tastatura ima 12 tastera kao stari telefoni: pritiskaš broj više puta zaredom da bi promenio slovo (npr. 2, 2, 2 = c). Sačekaj kratko i slovo se potvrđuje samo. Dugme sa slovom Ć/Č prebacuje ćirilicu/latinicu. Dugme sa smajlijem otvara emotikone, dugme sa zvezdicom otvara simbole.
+    </string>
+    <string name="open_settings">Otvori podešavanja tastature</string>
+    <string name="send_log">Pošalji log (za testiranje)</string>
+    <string name="clear_log">Obriši log</string>
+    <string name="log_cleared">Log obrisan</string>
+    <string name="log_missing">Još nema loga - prvo probaj tastaturu</string>
+
+    <string name="key_shift_desc">Šift, menja veliko i malo slovo</string>
+    <string name="key_backspace_desc">Obriši</string>
+    <string name="key_enter_desc">Enter, nova linija</string>
+    <string name="key_space_desc">Razmak</string>
+    <string name="key_script_desc">Promeni pismo, latinica ili ćirilica</string>
+    <string name="key_symbols_desc">Simboli</string>
+    <string name="key_star_desc">Slova - dodirni za brojeve</string>
+    <string name="mode_numbers">Brojevi - dodirni za simbole</string>
+    <string name="mode_symbols">Simboli - dodirni za slova. Dugo - pun panel simbola</string>
+    <string name="settings_size_small">Veličina: MALA (dodirni za srednju)</string>
+    <string name="settings_size_medium">Veličina: SREDNJA (dodirni za veliku)</string>
+    <string name="settings_size_large">Veličina: VELIKA (dodirni za malu)</string>
+    <string name="key_emoji_desc">Emotikoni</string>
+    <string name="key_back_to_letters_desc">Nazad na slova</string>
+    <string name="key_settings_desc">Podešavanja</string>
+    <string name="key_voice_desc">Glasovni unos</string>
+    <string name="voice_listening">Slušam…</string>
+    <string name="voice_processing">Obrađujem…</string>
+    <string name="voice_unavailable">Glasovni unos nije dostupan na ovom telefonu</string>
+    <string name="voice_need_permission">Potreban je pristup mikrofonu — otvaram aplikaciju da ga dozvoliš</string>
+    <string name="voice_permission_granted">Mikrofon dozvoljen — dodirni taster ponovo</string>
+    <string name="voice_permission_denied">Mikrofon nije dozvoljen — glasovni unos neće raditi</string>
+
+    <string name="settings_title">Podešavanja</string>
+    <string name="settings_send_log">Pošalji log (za testiranje)</string>
+    <string name="settings_help">Pomoć</string>
+    <string name="settings_about">O programu</string>
+    <string name="settings_back">⌨ Nazad</string>
+    <string name="settings_script_latin">Pismo: Latinica (dodirni za ćirilicu)</string>
+    <string name="settings_script_cyrillic">Pismo: Ćirilica (dodirni za latinicu)</string>
+    <string name="settings_feedback_on">Zvuk i vibracija: UKLJUČENO (dodirni da isključiš)</string>
+    <string name="settings_feedback_off">Zvuk i vibracija: ISKLJUČENO (dodirni da uključiš)</string>
+    <string name="settings_tap_one">Brzina: BRZO - reaguje čim dodirneš (dodirni za drugi režim)</string>
+    <string name="settings_tap_lift">Brzina: SREDNJE - reaguje kad podigneš prst (dodirni za drugi režim)</string>
+    <string name="settings_tap_standard">Brzina: STANDARDNO - dupli dodir kao ostatak sistema (dodirni za brzo)</string>
+
+    <string name="help_text">
+        Tasteri 2-9: pritisni više puta zaredom da promeniš slovo (npr. 2,2,2 = c). Sačekaj kratko i slovo se potvrđuje samo.\n\n
+        Taster 1: interpunkcija (tačka, zarez, upitnik...).\n\n
+        Taster 0: razmak (prvi pritisak), cifra 0 (drugi pritisak).\n\n
+        Taster *: kruži kroz tri moda - Slova, Brojevi, Simboli. U modu Simboli, dugi pritisak otvara pun panel od ~30 simbola.\n\n
+        Taster #: Šift - kratko veliko sledeće slovo, dugo Caps Lock.\n\n
+        ⏎ (gornji red, iznad 1): nova linija.\n\n
+        ⌫ (gornji red, iznad 2): briše. Drži za brzo brisanje u nizu.\n\n
+        🎤 (gornji red, iznad 3): glasovni unos.\n\n
+        😀 i ⚙ (drugi gornji red): emotikoni i podešavanja - oba traže pravi dupli-dodir, namerno, da se ne pobrkaju sa drugim tasterima.\n\n
+        Veliko slovo se samo uključuje na početku i posle tačke/upitnika/uzvičnika, i uvek se izgovara kao "veliko X".\n\n
+        U Podešavanjima biraš: brzinu kucanja, veličinu tastature (Mala/Srednja/Velika), zvuk/vibraciju, pismo.
+    </string>
+
+    <string name="about_text">
+        Ultra Keyboard\nVerzija 0.1\n\n
+        Autor: Demir Ajvazi\n\n
+        Deo Ultra porodice aplikacija.
+    </string>
+
+</resources>

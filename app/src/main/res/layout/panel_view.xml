@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/keyboard_bg"
+    android:padding="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/keyBackToLetters"
+            style="@style/KeyButtonSpecial"
+            android:layout_weight="1"
+            android:text="⌨ Nazad" />
+
+        <Button
+            android:id="@+id/keyPanelBackspace"
+            style="@style/KeyButtonSpecial"
+            android:layout_weight="1"
+            android:text="⌫" />
+
+        <Button
+            android:id="@+id/keyPanelSpace"
+            style="@style/KeyButtonSpecial"
+            android:layout_weight="1"
+            android:text="␣" />
+    </LinearLayout>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="6"
+        android:paddingTop="4dp" />
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/keyboard_bg"
+    android:padding="8dp">
+
+    <Button
+        android:id="@+id/btnInfoBackTop"
+        style="@style/KeyButtonSpecial"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginBottom="6dp"
+        android:text="@string/settings_back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+
+        <TextView
+            android:id="@+id/infoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/key_text"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnInfoBack"
+        style="@style/KeyButtonSpecial"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/settings_back" />
+
+</LinearLayout>

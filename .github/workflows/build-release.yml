@@ -1,0 +1,52 @@
+name: Build Ultra Keyboard
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Preuzmi kod
+        uses: actions/checkout@v4
+
+      - name: Podesi Java (JDK 17)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Rekonstruiši keystore iz GitHub Secrets
+        run: |
+          mkdir -p keystore
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore/ultra-release-key.jks
+          cat > keystore.properties << EOF
+          storeFile=keystore/ultra-release-key.jks
+          storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.KEY_ALIAS }}
+          keyPassword=${{ secrets.KEY_PASSWORD }}
+          EOF
+
+      - name: Dozvoli izvršavanje gradlew
+        run: chmod +x gradlew
+
+      - name: Build potpisanog release APK-a
+        run: ./gradlew assembleRelease
+
+      - name: Sačuvaj APK kao artifact (svaki build, i bez taga)
+        uses: actions/upload-artifact@v4
+        with:
+          name: UltraKeyboard-release-apk
+          path: app/build/outputs/apk/release/app-release.apk
+
+      - name: Napravi GitHub Release (samo kad se pusuje tag npr. v1.0)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: app/build/outputs/apk/release/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

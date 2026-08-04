@@ -1,0 +1,22 @@
+# Ključevi za potpisivanje - NIKAD ne ide na GitHub
+keystore.properties
+keystore/
+*.jks
+*.keystore
+
+# Android Studio / Gradle
+.gradle/
+.idea/
+local.properties
+*.iml
+.DS_Store
+captures/
+
+# Build izlazi
+build/
+app/build/
+*.apk
+*.aab
+
+# Gradle wrapper cache (gradlew/gradlew.bat i gradle-wrapper.properties OSTAJU, samo cache ne)
+.gradle
