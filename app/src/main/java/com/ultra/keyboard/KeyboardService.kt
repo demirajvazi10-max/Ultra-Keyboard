@@ -56,7 +56,7 @@ class KeyboardService : InputMethodService() {
         prefs = getSharedPreferences("ultra_keyboard_prefs", MODE_PRIVATE)
         feedbackEnabled = prefs.getBoolean("feedback_enabled", true)
         tapMode = TapMode.entries.getOrElse(prefs.getInt("tap_mode", 0)) { TapMode.ONE_TAP }
-        keySize = KeySize.entries.getOrElse(prefs.getInt("key_size", 1)) { KeySize.MEDIUM }
+        keySize = KeySize.entries.getOrElse(prefs.getInt("key_size", 2)) { KeySize.MEDIUM }
     }
 
     private fun setFeedbackEnabled(enabled: Boolean) {
@@ -168,9 +168,11 @@ class KeyboardService : InputMethodService() {
         val mainTextSp: Float,
         val specialTextSp: Float
     ) {
+        TINY(58, 32, 15f, 12f),
         SMALL(80, 42, 20f, 16f),
         MEDIUM(112, 52, 26f, 22f),
-        LARGE(142, 62, 32f, 26f)
+        LARGE(142, 62, 32f, 26f),
+        XLARGE(172, 72, 38f, 30f)
     }
 
     private val handler = Handler(Looper.getMainLooper())
@@ -333,12 +335,14 @@ class KeyboardService : InputMethodService() {
 
         refreshLetterLabelsAndDescriptions()
 
-        // Tasteri 2-9: slova (samo u modu LETTERS)
+        // Tasteri 2-9: slova (LETTERS) ili direktan broj/simbol (ostali modovi)
         for ((id, btn) in letterKeys) {
             wireAccessibleKey(btn, id) {
-                if (keyMode != KeyMode.LETTERS) return@wireAccessibleKey
-                val options = KeyMaps.mapFor(isCyrillic)[id] ?: return@wireAccessibleKey
-                handleOptionsKey(id, options, applyCase = true)
+                handleDigitRowKey(id) {
+                    KeyMaps.mapFor(isCyrillic)[id]?.let { options ->
+                        handleOptionsKey(id, options, applyCase = true)
+                    }
+                }
             }
         }
 
@@ -686,9 +690,11 @@ class KeyboardService : InputMethodService() {
         fun refreshSizeLabel() {
             btnSize.text = getString(
                 when (keySize) {
+                    KeySize.TINY -> R.string.settings_size_tiny
                     KeySize.SMALL -> R.string.settings_size_small
                     KeySize.MEDIUM -> R.string.settings_size_medium
                     KeySize.LARGE -> R.string.settings_size_large
+                    KeySize.XLARGE -> R.string.settings_size_xlarge
                 }
             )
         }
@@ -716,9 +722,11 @@ class KeyboardService : InputMethodService() {
         }
         wireAccessibleKey(btnSize, "sSize") {
             val next = when (keySize) {
+                KeySize.TINY -> KeySize.SMALL
                 KeySize.SMALL -> KeySize.MEDIUM
                 KeySize.MEDIUM -> KeySize.LARGE
-                KeySize.LARGE -> KeySize.SMALL
+                KeySize.LARGE -> KeySize.XLARGE
+                KeySize.XLARGE -> KeySize.TINY
             }
             setKeySize(next)
             refreshSizeLabel()

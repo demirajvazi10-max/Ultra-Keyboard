@@ -16,7 +16,7 @@
         android:textSize="18sp"
         android:importantForAccessibility="no" />
 
-    <!-- Kontrolni red 1: Enter (iznad 1), Brisanje (iznad 2), Glasovni unos (iznad 3) -->
+    <!-- Kontrolni red 1: Enter, Glasovni unos, Brisanje (na ivici, dalje od Emoji/Podešavanja) -->
     <LinearLayout
         android:id="@+id/controlRow1"
         android:layout_width="match_parent"
@@ -29,17 +29,18 @@
             android:text="⏎" />
 
         <Button
-            android:id="@+id/keyBackspace"
-            style="@style/KeyButtonSpecial"
-            android:text="⌫" />
-
-        <Button
             android:id="@+id/keyVoice"
             style="@style/KeyButtonSpecial"
             android:text="🎤" />
+
+        <Button
+            android:id="@+id/keyBackspace"
+            style="@style/KeyButtonSpecial"
+            android:text="⌫" />
     </LinearLayout>
 
-    <!-- Kontrolni red 2: Emotikoni, Podešavanja - oba traže dupli-dodir -->
+    <!-- Kontrolni red 2: Emotikoni, Podešavanja, pa prazan prostor (poravnat sa
+         Brisanjem iznad, da slučajan dodir tamo ne otvori ništa) -->
     <LinearLayout
         android:id="@+id/controlRow2"
         android:layout_width="match_parent"
@@ -55,6 +56,12 @@
             android:id="@+id/keySettings"
             style="@style/KeyButtonSpecial"
             android:text="⚙" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:importantForAccessibility="no" />
     </LinearLayout>
 
     <!-- 3x4 tastatura -->

@@ -22,9 +22,11 @@
     <string name="key_star_desc">Slova - dodirni za brojeve</string>
     <string name="mode_numbers">Brojevi - dodirni za simbole</string>
     <string name="mode_symbols">Simboli - dodirni za slova. Dugo - pun panel simbola</string>
+    <string name="settings_size_tiny">Veličina: NAJMANJA (dodirni za malu)</string>
     <string name="settings_size_small">Veličina: MALA (dodirni za srednju)</string>
     <string name="settings_size_medium">Veličina: SREDNJA (dodirni za veliku)</string>
-    <string name="settings_size_large">Veličina: VELIKA (dodirni za malu)</string>
+    <string name="settings_size_large">Veličina: VELIKA (dodirni za najveću)</string>
+    <string name="settings_size_xlarge">Veličina: NAJVEĆA (dodirni za najmanju)</string>
     <string name="key_emoji_desc">Emotikoni</string>
     <string name="key_back_to_letters_desc">Nazad na slova</string>
     <string name="key_settings_desc">Podešavanja</string>
@@ -56,8 +58,8 @@
         Taster *: kruži kroz tri moda - Slova, Brojevi, Simboli. U modu Simboli, dugi pritisak otvara pun panel od ~30 simbola.\n\n
         Taster #: Šift - kratko veliko sledeće slovo, dugo Caps Lock.\n\n
         ⏎ (gornji red, iznad 1): nova linija.\n\n
-        ⌫ (gornji red, iznad 2): briše. Drži za brzo brisanje u nizu.\n\n
-        🎤 (gornji red, iznad 3): glasovni unos.\n\n
+        🎤 (gornji red, iznad 2): glasovni unos.\n\n
+        ⌫ (gornji red, iznad 3): briše. Drži za brzo brisanje u nizu.\n\n
         😀 i ⚙ (drugi gornji red): emotikoni i podešavanja - oba traže pravi dupli-dodir, namerno, da se ne pobrkaju sa drugim tasterima.\n\n
         Veliko slovo se samo uključuje na početku i posle tačke/upitnika/uzvičnika, i uvek se izgovara kao "veliko X".\n\n
         U Podešavanjima biraš: brzinu kucanja, veličinu tastature (Mala/Srednja/Velika), zvuk/vibraciju, pismo.
