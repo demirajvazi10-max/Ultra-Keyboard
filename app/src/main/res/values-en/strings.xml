@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">Ultra Keyboard</string>
+    <string name="setup_title">Ultra Keyboard — Setup</string>
+    <string name="setup_instructions">
+        For the keyboard to work, you need to:\n\n
+        1) Turn it on in Settings → System → Keyboards → Manage keyboards, and enable "Ultra Keyboard" there.\n\n
+        2) When typing text anywhere (a message, a search box), press and hold the keyboard-switch button (the globe icon on the space bar, or long-press the space bar) and choose "Ultra Keyboard".\n\n
+        The keyboard has 12 keys like old phones: press a number several times in a row to cycle through letters (e.g. 2, 2, 2 = c). Wait a moment and the letter confirms itself. The Ć/Č key switches between Cyrillic and Latin script. The smiley key opens emoji, the star key opens symbols.
+    </string>
+    <string name="open_settings">Open keyboard settings</string>
+    <string name="send_log">Send log (for testing)</string>
+    <string name="clear_log">Clear log</string>
+    <string name="log_cleared">Log cleared</string>
+    <string name="log_missing">No log yet - try the keyboard first</string>
+
+    <string name="key_shift_desc">Shift, toggles uppercase and lowercase</string>
+    <string name="key_backspace_desc">Delete</string>
+    <string name="key_enter_desc">Enter, new line</string>
+    <string name="key_space_desc">Space</string>
+    <string name="key_script_desc">Switch script, Latin or Cyrillic</string>
+    <string name="key_symbols_desc">Symbols</string>
+    <string name="key_star_desc">Letters - tap for numbers</string>
+    <string name="mode_numbers">Numbers - tap for symbols</string>
+    <string name="mode_symbols">Symbols - tap for letters. Long-press for the full symbol panel</string>
+    <string name="settings_size_tiny">Size: SMALLEST (tap for small)</string>
+    <string name="settings_size_small">Size: SMALL (tap for medium)</string>
+    <string name="settings_size_medium">Size: MEDIUM (tap for large)</string>
+    <string name="settings_size_large">Size: LARGE (tap for largest)</string>
+    <string name="settings_size_xlarge">Size: LARGEST (tap for smallest)</string>
+    <string name="key_emoji_desc">Emoji</string>
+    <string name="key_back_to_letters_desc">Back to letters</string>
+    <string name="key_settings_desc">Settings</string>
+    <string name="key_voice_desc">Voice input</string>
+    <string name="shift_label_off">lowercase</string>
+    <string name="shift_label_once">next letter uppercase</string>
+    <string name="shift_label_caps">all caps</string>
+    <string name="key0_label_letters">0\nspace</string>
+    <string name="key_desc_letters">Key %1$d: %2$s</string>
+    <string name="key_desc_digit_or_symbol">Key %1$d: %2$s</string>
+    <string name="announced_uppercase">uppercase %1$s</string>
+    <string name="announced_entered">entered %1$s</string>
+    <string name="voice_listening">Listening…</string>
+    <string name="voice_processing">Processing…</string>
+    <string name="voice_unavailable">Voice input is not available on this phone</string>
+    <string name="voice_need_permission">Microphone access is needed — opening the app so you can allow it</string>
+    <string name="voice_permission_granted">Microphone allowed — tap the key again</string>
+    <string name="voice_permission_denied">Microphone not allowed — voice input won\'t work</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_send_log">Send log (for testing)</string>
+    <string name="settings_help">Help</string>
+    <string name="settings_about">About</string>
+    <string name="settings_back">⌨ Back</string>
+    <string name="settings_script_latin">Script: Latin (tap for Cyrillic)</string>
+    <string name="settings_script_cyrillic">Script: Cyrillic (tap for Latin)</string>
+    <string name="settings_feedback_on">Sound and vibration: ON (tap to turn off)</string>
+    <string name="settings_feedback_off">Sound and vibration: OFF (tap to turn on)</string>
+    <string name="settings_tap_one">Speed: FAST - reacts as soon as you touch (tap for another mode)</string>
+    <string name="settings_tap_lift">Speed: MEDIUM - reacts when you lift your finger (tap for another mode)</string>
+    <string name="settings_tap_standard">Speed: STANDARD - double-tap like the rest of the system (tap for fast)</string>
+
+    <string name="help_text">
+        Keys 2-9: press repeatedly in a row to cycle the letter (e.g. 2,2,2 = c). Wait a moment and the letter confirms itself.\n\n
+        Key 1: punctuation (period, comma, question mark...).\n\n
+        Key 0: space (first press), digit 0 (second press).\n\n
+        Key *: cycles through three modes - Letters, Numbers, Symbols. In Symbols mode, a long press opens the full panel of about 30 symbols.\n\n
+        Key #: Shift - short press for next letter uppercase, long press for Caps Lock.\n\n
+        ⏎ (top row, above 1): new line.\n\n
+        🎤 (top row, above 2): voice input.\n\n
+        ⌫ (top row, above 3): deletes. Hold for fast repeated deleting.\n\n
+        😀 and ⚙ (second top row): emoji and settings - both intentionally require a real double-tap, so they don\'t get mixed up with the other keys.\n\n
+        Capitalization turns on automatically at the start and after a period/question mark/exclamation mark, and is always announced as "uppercase X".\n\n
+        In Settings you can choose: typing speed, keyboard size (Small/Medium/Large), sound/vibration, script.
+    </string>
+
+    <string name="about_text">
+        Ultra Keyboard\nVersion 0.1\n\n
+        Author: Demir Ajvazi\n\n
+        Part of the Ultra family of apps.
+    </string>
+
+    <!-- Order MUST match KeyMaps.EMOJI_SYMBOLS -->
+    <string-array name="emoji_descriptions">
+        <item>grinning face</item>
+        <item>laughing until tears</item>
+        <item>smiling face</item>
+        <item>face in love</item>
+        <item>kiss</item>
+        <item>winking</item>
+        <item>crying</item>
+        <item>loud crying</item>
+        <item>anger</item>
+        <item>shock</item>
+        <item>thumbs up</item>
+        <item>thumbs down</item>
+        <item>applause</item>
+        <item>please, thank you</item>
+        <item>heart</item>
+        <item>broken heart</item>
+        <item>fire</item>
+        <item>celebration</item>
+        <item>check mark, confirmed</item>
+        <item>cross mark, incorrect</item>
+        <item>sun</item>
+        <item>rain</item>
+        <item>coffee</item>
+        <item>dog</item>
+        <item>cat</item>
+        <item>soccer ball</item>
+        <item>car</item>
+        <item>phone</item>
+        <item>alarm clock</item>
+        <item>birthday cake</item>
+    </string-array>
+
+</resources>

@@ -1,147 +1,170 @@
 # Ultra Keyboard
 
-Android tastatura (IME) sa klasičnim 3×4 rasporedom kao na starim telefonima
-(multi-tap), sa punom podrškom za TalkBack, srpsku latinicu i ćirilicu, simbole
-i emotikone.
+An Android keyboard (IME) with the classic 3×4 layout from old phones
+(multi-tap), with full TalkBack support, Serbian Latin and Cyrillic script,
+symbols and emoji.
 
-## Kako otvoriti projekat
+## How to open the project
 
-1. Skini/otpakuj ovaj folder.
-2. Otvori **Android Studio** → *Open* → izaberi folder `UltraKeyboard`.
-3. Pri prvom otvaranju, Android Studio će tražiti da preuzme Gradle distribuciju
-   (definisano u `gradle/wrapper/gradle-wrapper.properties`) — to je normalno,
-   sačekaj da završi sinhronizaciju.
-4. Poveži telefon (ili pokreni emulator) i klikni **Run**.
+1. Download/unzip this folder.
+2. Open **Android Studio** → *Open* → select the `UltraKeyboard` folder.
+3. On first open, Android Studio will ask to download the Gradle
+   distribution (defined in `gradle/wrapper/gradle-wrapper.properties`) —
+   that's normal, wait for the sync to finish.
+4. Connect a phone (or start an emulator) and click **Run**.
 
-## Kako uključiti tastaturu na telefonu
+## How to enable the keyboard on your phone
 
-1. Pokreni instaliranu aplikaciju "Ultra Keyboard" — otvoriće se ekran sa
-   uputstvom i dugmetom **"Otvori podešavanja tastature"**.
-2. U Podešavanjima → Sistem → Jezici i unos → Tastature → Upravljaj
-   tastaturama, uključi "Ultra Keyboard".
-3. U bilo kom polju za tekst, dugo pritisni traku za razmak (ili ikonicu
-   planete/globusa) i izaberi "Ultra Keyboard" kao aktivnu.
+1. Launch the installed "Ultra Keyboard" app — a screen with instructions
+   and an **"Open keyboard settings"** button will open.
+2. In Settings → System → Languages & input → Keyboards → Manage
+   keyboards, enable "Ultra Keyboard".
+3. In any text field, long-press the space bar (or the globe icon) and
+   choose "Ultra Keyboard" as the active keyboard.
 
-## Kako radi unos
+## How input works
 
-- **Tasteri 2–9**: pritisni više puta zaredom da promeniš slovo (npr. 2,2,2 = c).
-  Sačekaj kratko (0.9s) i slovo se potvrđuje — sledeći pritisak na isti taster
-  počinje novo slovo.
-- **Taster 1**: interpunkcija (. , ? ! ' ")
-- **Taster 0**: razmak (dug pritisak nije potreban, prvi pritisak je razmak)
-- **Taster \***: kratak pritisak = brzi simboli (- : ; @ / *); **dug pritisak**
-  otvara pun panel simbola.
-- **Taster #**: kratak pritisak = novi red (Enter); **dug pritisak** otvara
-  panel emotikona.
-- **⇧ (Shift)**: jedan pritisak = veliko sledeće slovo; dupli pritisak (brzo
-  dva puta) = zaključano veliko pisanje (Caps Lock); ponovo = isključi.
-- **LAT/ЋИР**: prebacuje latinicu ↔ ćirilicu.
-- **⌫**: briše.
+- **Keys 2–9**: press repeatedly in a row to cycle the letter (e.g. 2,2,2 =
+  c). Wait a moment (0.9s) and the letter confirms itself — the next press
+  on the same key starts a new letter.
+- **Key 1**: punctuation (. , ? ! ' ")
+- **Key 0**: space (no long press needed, first press is a space)
+- **Key \***: short press = quick symbols (- : ; @ / *); **long press**
+  opens the full symbol panel.
+- **Key #**: short press = new line (Enter); **long press** opens the
+  emoji panel.
+- **⇧ (Shift)**: one press = next letter uppercase; double press (quickly
+  twice) = locked uppercase (Caps Lock); press again = off.
+- **LAT/CYR**: switches Latin ↔ Cyrillic script.
+- **⌫**: deletes.
 
-## Pristupačnost (TalkBack)
+## Accessibility (TalkBack)
 
-Svaki taster je pravi `Button` (ne crtež na canvasu), pa TalkBack automatski
-podržava: fokusiranje dodirom, čitanje opisa (`contentDescription`), i
-navigaciju prevlačenjem prsta. Pošto TalkBack po sistemskom pravilu traži
-**dupli dodir** za aktivaciju bilo kog dugmeta, multi-tap ciklus se radi tako
-što se isti taster dvostruko-dodirne uzastopno (svaki dupli-dodir = jedan
-"klik" na taj broj, kao pritisak na starom telefonu).
+Every key is a real `Button` (not a canvas drawing), so TalkBack
+automatically supports: focus by touch, reading descriptions
+(`contentDescription`), and swipe navigation. Since TalkBack's system rule
+requires a **double tap** to activate any button, the multi-tap cycle works
+by double-tapping the same key repeatedly (each double-tap = one "press" of
+that number, just like on an old phone).
 
-Svaki put kad se slovo promeni ili unese, aplikacija to **naglas najavljuje**
-(`announceForAccessibility`), tako da korisnik čuje trenutno slovo bez potrebe
-da diže prst i istražuje ekran.
+Every time a letter changes or is entered, the app **announces it aloud**
+(`announceForAccessibility`), so the user hears the current letter without
+needing to lift a finger and explore the screen.
 
-## Slanje loga za testiranje (bez adb-a)
+## Localization / multi-language support
 
-Aplikacija sad sama upisuje log u fajl na telefonu dok se koristi tastatura.
-Kad neko testira i naiđe na problem:
+All user-facing text — menus, instructions, and everything TalkBack/JAWS
+reads aloud while typing — lives in Android string resources, not
+hardcoded in the Kotlin code. Serbian is the default (`res/values/strings.xml`);
+English lives in `res/values-en/strings.xml`. Android automatically picks
+the matching language based on the phone's system language.
 
-1. Otvori aplikaciju "Ultra Keyboard" (ikonica na telefonu).
-2. Klikne **"Pošalji log (za testiranje)"** — otvara se meni za deljenje
-   (WhatsApp, Email, itd.) sa log fajlom spremnim za slanje.
-3. Po želji, **"Obriši log"** pre novog testa da log ne bude pun starih
-   pokušaja.
+To add another language later: create a new `res/values-xx/strings.xml`
+(where `xx` is the language code) with the exact same string names as
+`res/values/strings.xml`, translated. No code changes needed. The T9 letter
+layout itself (`KeyMaps.kt`) stays Serbian (Latin/Cyrillic) regardless of
+interface language, unless a language-specific letter layout is added there
+too.
 
-## Potpisana (release) verzija — za GitHub / Play Store
+## Sending a test log (without adb)
 
-U projektu se sada nalazi tvoj lični Ultra potpisni ključ:
-- `keystore/ultra-release-key.jks` — sam ključ
-- `keystore/PASSWORD_SACUVAJ_OVO.txt` — lozinka (ista za store i key)
-- `keystore.properties` — fajl koji Gradle čita da bi automatski potpisao release build
+The app now writes a log to a file on the phone while the keyboard is used.
+When someone is testing and runs into a problem:
 
-**KRITIČNO**: ovaj ključ je zauvek identitet "Ultra" aplikacija na Play Store-u.
-Ako ga izgubiš, **nikad više nećeš moći da objaviš update** za istu aplikaciju
-pod istim imenom — moraš praviti potpuno novu aplikaciju od nule. Zato:
+1. Open the "Ultra Keyboard" app (the icon on the phone).
+2. Tap **"Send log (for testing)"** — a share menu opens (WhatsApp, Email,
+   etc.) with the log file ready to send.
+3. Optionally, tap **"Clear log"** before a new test so the log isn't full
+   of old attempts.
 
-1. Odmah napravi rezervnu kopiju `keystore/ultra-release-key.jks` i lozinke iz
-   `PASSWORD_SACUVAJ_OVO.txt` NEGDE VAN ovog foldera (npr. lozinkom zaštićen
-   cloud folder, USB koji ne gubiš, password manager).
-2. Isti ključ ćemo koristiti za SVE buduće "Ultra" aplikacije (Creative
-   Suite, AI Camera...) — jedan ključ, jedan brend.
-3. `keystore.properties` i sam `keystore/` folder su namerno u `.gitignore`
-   — **nikad ne idu na GitHub**. Samo izvorni kod ide tamo.
+## Signed (release) build — for GitHub / Play Store
 
-Da napraviš potpisani APK:
+The project now contains your personal Ultra signing key:
+- `keystore/ultra-release-key.jks` — the key itself
+- `keystore/PASSWORD_SACUVAJ_OVO.txt` — the password (same for store and
+  key)
+- `keystore.properties` — the file Gradle reads to automatically sign the
+  release build
+
+**CRITICAL**: this key is forever the identity of the "Ultra" apps on the
+Play Store. If you lose it, **you will never be able to publish an update**
+for the same app under the same name again — you'd have to create a
+completely new app from scratch. So:
+
+1. Immediately back up `keystore/ultra-release-key.jks` and the password
+   from `PASSWORD_SACUVAJ_OVO.txt` SOMEWHERE OUTSIDE this folder (e.g. a
+   password-protected cloud folder, a USB drive you won't lose, a password
+   manager).
+2. We'll use the same key for ALL future "Ultra" apps (Creative Suite, AI
+   Camera...) — one key, one brand.
+3. `keystore.properties` and the `keystore/` folder itself are
+   intentionally in `.gitignore` — **they never go to GitHub**. Only the
+   source code goes there.
+
+To build a signed APK:
 ```
 gradlew.bat assembleRelease
 ```
-Fajl će se pojaviti u `app\build\outputs\apk\release\app-release.apk` —
-to je verzija potpisana tvojim ključem, spremna za deljenje ili dalje korake
-ka Play Store-u (koji dodatno traži .aab fajl — `gradlew.bat bundleRelease`
-kad dođe vreme za to).
+The file will appear at `app\build\outputs\apk\release\app-release.apk` —
+that's the version signed with your key, ready to share or for the next
+steps toward the Play Store (which additionally requires an .aab file —
+`gradlew.bat bundleRelease` when it's time for that).
 
-## GitHub Actions — automatski build potpisanog APK-a
+## GitHub Actions — automatic signed APK build
 
-Workflow (`.github/workflows/build-release.yml`) sam pravi potpisan APK na
-GitHub-ovom serveru pri svakom push-u na `main`, i pravi pravi GitHub Release
-(sa APK-om prikačenim za preuzimanje) kad god pušuješ tag koji počinje sa `v`
-(npr. `v1.0`).
+The workflow (`.github/workflows/build-release.yml`) builds a signed APK on
+GitHub's server on every push to `main`, and creates a real GitHub Release
+(with the APK attached for download) whenever you push a tag starting with
+`v` (e.g. `v1.0`).
 
-Pošto `keystore/` i `keystore.properties` **namerno nisu** u repo-u (vidi
-`.gitignore`), workflow ih sam sastavlja iz **GitHub Secrets** pri svakom
-build-u, koristi ih, i odbaci — nikad ne završe u kodu ili istoriji repo-a.
+Since `keystore/` and `keystore.properties` are **intentionally not** in the
+repo (see `.gitignore`), the workflow assembles them itself from **GitHub
+Secrets** on every build, uses them, and discards them — they never end up
+in the code or the repo history.
 
-### Jednokratno podešavanje (pre prvog push-a)
+### One-time setup (before the first push)
 
-**1. Pretvori keystore u base64 tekst** (u cmd-u, u folderu projekta):
+**1. Convert the keystore to base64 text** (in cmd, in the project folder):
 ```
 powershell -Command "[Convert]::ToBase64String([IO.File]::ReadAllBytes('keystore\ultra-release-key.jks')) | Out-File -Encoding ascii keystore_base64.txt"
 ```
-Ovo pravi fajl `keystore_base64.txt` sa dugačkim tekstom (bez razmaka/novih
-redova) - to je tvoj keystore, samo u tekstualnom obliku pogodnom za Secrets.
+This creates a file `keystore_base64.txt` with a long string of text (no
+spaces/newlines) — that's your keystore, just in text form suitable for
+Secrets.
 
-**2. Otvori lozinku**:
+**2. Open the password**:
 ```
 type keystore\PASSWORD_SACUVAJ_OVO.txt
 ```
 
-**3. Na GitHub-u**: otvori repo → **Settings → Secrets and variables →
-Actions → New repository secret**, i dodaj četiri:
+**3. On GitHub**: open the repo → **Settings → Secrets and variables →
+Actions → New repository secret**, and add four:
 
-| Ime tajne | Vrednost |
+| Secret name | Value |
 |---|---|
-| `KEYSTORE_BASE64` | ceo sadržaj `keystore_base64.txt` |
-| `KEYSTORE_PASSWORD` | lozinka iz `PASSWORD_SACUVAJ_OVO.txt` |
+| `KEYSTORE_BASE64` | the entire content of `keystore_base64.txt` |
+| `KEYSTORE_PASSWORD` | the password from `PASSWORD_SACUVAJ_OVO.txt` |
 | `KEY_ALIAS` | `ultra_keyboard` |
-| `KEY_PASSWORD` | ista lozinka kao `KEYSTORE_PASSWORD` |
+| `KEY_PASSWORD` | same password as `KEYSTORE_PASSWORD` |
 
-**4. Obriši `keystore_base64.txt`** posle kopiranja u GitHub (bio je samo
-privremen, sadrži tajni ključ u čitljivom obliku - ne treba da ostane na
-disku niti da se slučajno doda u git).
+**4. Delete `keystore_base64.txt`** after copying it into GitHub (it was
+only temporary, it contains the secret key in readable form - it shouldn't
+stay on disk or accidentally get added to git).
 
-Posle ovoga, svaki push automatski pravi APK (vidi se pod repo-ov **Actions**
-tab, dugme **Artifacts** na dnu svakog build-a), a push-ovanje verzionog taga
-pravi pravi Release spreman za deljenje linkom.
+After this, every push automatically builds an APK (visible under the
+repo's **Actions** tab, the **Artifacts** button at the bottom of each
+build), and pushing a version tag creates a real Release ready to share via
+link.
 
-## Poznata ograničenja / ideje za dalje
+## Known limitations / ideas for later
 
- Dž, Lj, Nj se kucaju kao dva odvojena slova (d+ž, l+j, n+j) — namerno
-  pojednostavljeno za prvu verziju.
-- Nema još predikcije reči (T9 rečnik) — dogovoreno da se doda kasnije.
-- Raspored slova po tasterima je lako promeniti u `KeyMaps.kt`.
-- Ikonica aplikacije je jednostavan plejsholder (vector drawable) — zameni po
-  želji sa `app/src/main/res/drawable/ic_launcher.xml` ili pravim mipmap
-  setom.
-- Nije testirano na pravom uređaju iz ovog razgovora (nemam pristup Android
-  SDK/emulatoru u ovom okruženju) — javi mi šta javi Android Studio pri prvom
-  build-u pa rešavamo zajedno.
+- Dž, Lj, Nj are typed as two separate letters (d+ž, l+j, n+j) — intentionally
+  simplified for the first version.
+- No word prediction (T9 dictionary) yet — agreed to add later.
+- The letter layout per key is easy to change in `KeyMaps.kt`.
+- The app icon is a simple placeholder (vector drawable) — replace it as you
+  like with `app/src/main/res/drawable/ic_launcher.xml` or a proper mipmap
+  set.
+- Not tested on a real device from this conversation (no access to the
+  Android SDK/emulator in this environment) — let me know what Android
+  Studio reports on the first build and we'll sort it out together.

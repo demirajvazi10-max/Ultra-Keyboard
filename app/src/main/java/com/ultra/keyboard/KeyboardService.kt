@@ -505,9 +505,9 @@ class KeyboardService : InputMethodService() {
 
     private fun updateShiftUi() {
         val label = when (shiftState) {
-            ShiftState.OFF -> "malo slovo"
-            ShiftState.ONCE -> "veliko sledeće slovo"
-            ShiftState.CAPS_LOCK -> "sva velika slova"
+            ShiftState.OFF -> getString(R.string.shift_label_off)
+            ShiftState.ONCE -> getString(R.string.shift_label_once)
+            ShiftState.CAPS_LOCK -> getString(R.string.shift_label_caps)
         }
         keyHashBtn?.text = if (shiftState == ShiftState.CAPS_LOCK) "#\n⇧⇧" else "#\n⇧"
         keyHashBtn?.contentDescription = getString(R.string.key_shift_desc) + ": " + label
@@ -557,16 +557,18 @@ class KeyboardService : InputMethodService() {
                 for ((id, btn) in letterKeys) {
                     val letters = map[id]?.dropLast(1)?.joinToString("") ?: ""
                     btn.text = "$id\n$letters"
-                    btn.contentDescription = "Taster $id: ${map[id]?.dropLast(1)?.joinToString(", ")}"
+                    btn.contentDescription = getString(
+                        R.string.key_desc_letters, id, map[id]?.dropLast(1)?.joinToString(", ")
+                    )
                 }
                 key1Btn?.text = "1"
-                key0Btn?.text = "0\nrazmak"
+                key0Btn?.text = getString(R.string.key0_label_letters)
             }
             KeyMode.NUMBERS -> {
                 for ((id, btn) in letterKeys) {
                     val d = KeyMaps.NUMBERS[id]?.toString() ?: ""
                     btn.text = d
-                    btn.contentDescription = "Taster $id: $d"
+                    btn.contentDescription = getString(R.string.key_desc_digit_or_symbol, id, d)
                 }
                 key1Btn?.text = KeyMaps.NUMBERS[1]?.toString() ?: "1"
                 key0Btn?.text = KeyMaps.NUMBERS[0]?.toString() ?: "0"
@@ -575,7 +577,7 @@ class KeyboardService : InputMethodService() {
                 for ((id, btn) in letterKeys) {
                     val s = KeyMaps.SYMBOLS_MODE[id]?.toString() ?: ""
                     btn.text = s
-                    btn.contentDescription = "Taster $id: $s"
+                    btn.contentDescription = getString(R.string.key_desc_digit_or_symbol, id, s)
                 }
                 key1Btn?.text = KeyMaps.SYMBOLS_MODE[1]?.toString() ?: ""
                 key0Btn?.text = KeyMaps.SYMBOLS_MODE[0]?.toString() ?: ""
@@ -639,7 +641,7 @@ class KeyboardService : InputMethodService() {
     private fun updatePreview(text: String) {
         previewText?.text = text
         val toAnnounce = if (text.length == 1 && text[0].isUpperCase()) {
-            "veliko ${text[0]}"
+            getString(R.string.announced_uppercase, text[0])
         } else {
             text
         }
@@ -794,7 +796,11 @@ class KeyboardService : InputMethodService() {
         currentPanel = Panel.EMOJI
         val v = LayoutInflater.from(this).inflate(R.layout.panel_view, null)
         val grid: GridLayout = v.findViewById(R.id.gridContainer)
-        populateGrid(grid, KeyMaps.EMOJI)
+        val descriptions = resources.getStringArray(R.array.emoji_descriptions)
+        val items = KeyMaps.EMOJI_SYMBOLS.mapIndexed { i, symbol ->
+            symbol to (descriptions.getOrElse(i) { symbol })
+        }
+        populateGrid(grid, items)
         wirePanelCommonButtons(v)
         return v
     }
@@ -818,7 +824,7 @@ class KeyboardService : InputMethodService() {
             btn.minimumHeight = 130
             wireAccessibleKey(btn, "grid_$symbol") {
                 currentInputConnection?.commitText(symbol, 1)
-                btn.announceForAccessibility("uneto $description")
+                btn.announceForAccessibility(getString(R.string.announced_entered, description))
             }
             grid.addView(btn)
         }

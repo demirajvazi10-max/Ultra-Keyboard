@@ -31,6 +31,14 @@
     <string name="key_back_to_letters_desc">Nazad na slova</string>
     <string name="key_settings_desc">Podešavanja</string>
     <string name="key_voice_desc">Glasovni unos</string>
+    <string name="shift_label_off">malo slovo</string>
+    <string name="shift_label_once">veliko sledeće slovo</string>
+    <string name="shift_label_caps">sva velika slova</string>
+    <string name="key0_label_letters">0\nrazmak</string>
+    <string name="key_desc_letters">Taster %1$d: %2$s</string>
+    <string name="key_desc_digit_or_symbol">Taster %1$d: %2$s</string>
+    <string name="announced_uppercase">veliko %1$s</string>
+    <string name="announced_entered">uneto %1$s</string>
     <string name="voice_listening">Slušam…</string>
     <string name="voice_processing">Obrađujem…</string>
     <string name="voice_unavailable">Glasovni unos nije dostupan na ovom telefonu</string>
@@ -70,5 +78,39 @@
         Autor: Demir Ajvazi\n\n
         Deo Ultra porodice aplikacija.
     </string>
+
+    <!-- Redosled MORA da se poklapa sa KeyMaps.EMOJI_SYMBOLS -->
+    <string-array name="emoji_descriptions">
+        <item>nasmejano lice</item>
+        <item>smeh do suza</item>
+        <item>osmeh</item>
+        <item>zaljubljeno lice</item>
+        <item>poljubac</item>
+        <item>namigivanje</item>
+        <item>plač</item>
+        <item>jak plač</item>
+        <item>ljutnja</item>
+        <item>šok</item>
+        <item>palac gore</item>
+        <item>palac dole</item>
+        <item>aplauz</item>
+        <item>molba, hvala</item>
+        <item>srce</item>
+        <item>slomljeno srce</item>
+        <item>vatra</item>
+        <item>slavlje</item>
+        <item>kvačica, potvrđeno</item>
+        <item>iks, netačno</item>
+        <item>sunce</item>
+        <item>kiša</item>
+        <item>kafa</item>
+        <item>pas</item>
+        <item>mačka</item>
+        <item>fudbal</item>
+        <item>auto</item>
+        <item>telefon</item>
+        <item>budilnik</item>
+        <item>rođendanska torta</item>
+    </string-array>
 
 </resources>

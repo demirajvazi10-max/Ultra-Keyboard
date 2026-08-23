@@ -64,37 +64,14 @@ object KeyMaps {
         "&", "*", "+", "=", "/", "\\", "<", ">", "€", "din."
     )
 
-    // Osnovni set emotikona (dovoljno za početak, lako proširiti)
-    val EMOJI: List<Pair<String, String>> = listOf(
-        "😀" to "nasmejano lice",
-        "😂" to "smeh do suza",
-        "😊" to "osmeh",
-        "😍" to "zaljubljeno lice",
-        "😘" to "poljubac",
-        "😉" to "namigivanje",
-        "😢" to "plač",
-        "😭" to "jak plač",
-        "😡" to "ljutnja",
-        "😱" to "šok",
-        "👍" to "palac gore",
-        "👎" to "palac dole",
-        "👏" to "aplauz",
-        "🙏" to "molba, hvala",
-        "❤️" to "srce",
-        "💔" to "slomljeno srce",
-        "🔥" to "vatra",
-        "🎉" to "slavlje",
-        "✅" to "kvačica, potvrđeno",
-        "❌" to "iks, netačno",
-        "☀️" to "sunce",
-        "🌧️" to "kiša",
-        "☕" to "kafa",
-        "🐶" to "pas",
-        "🐱" to "mačka",
-        "⚽" to "fudbal",
-        "🚗" to "auto",
-        "📱" to "telefon",
-        "⏰" to "budilnik",
-        "🎂" to "rođendanska torta"
+    // Osnovni set emotikona (dovoljno za početak, lako proširiti).
+    // Samo simboli - univerzalni su, ne treba im prevod. Opisi (za
+    // announceForAccessibility/contentDescription) su u strings.xml,
+    // u nizu "emoji_descriptions", U ISTOM REDOSLEDU kao ovde - tako
+    // se automatski prevode zajedno sa ostatkom interfejsa.
+    val EMOJI_SYMBOLS: List<String> = listOf(
+        "😀", "😂", "😊", "😍", "😘", "😉", "😢", "😭", "😡", "😱",
+        "👍", "👎", "👏", "🙏", "❤️", "💔", "🔥", "🎉", "✅", "❌",
+        "☀️", "🌧️", "☕", "🐶", "🐱", "⚽", "🚗", "📱", "⏰", "🎂"
     )
 }

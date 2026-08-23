@@ -24,8 +24,8 @@ android {
         applicationId = "com.ultra.keyboard"
         minSdk = 24
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.0.1-beta"
+        versionCode = 3
+        versionName = "1.0.2-beta"
     }
 
     signingConfigs {
@@ -58,13 +58,31 @@ android {
     }
 
     // Preimenuj izlazni APK iz podrazumevanog "app-release.apk" u nešto
-    // prepoznatljivo, npr. "UltraKeyboard-1.0.0-beta.apk"
+    // prepoznatljivo, npr. "UltraKeyboard-1.1.apk"
     applicationVariants.all {
         outputs.all {
             val output = this as com.android.build.gradle.internal.api.BaseVariantOutputImpl
             output.outputFileName = "UltraKeyboard-${versionName}.apk"
         }
     }
+}
+
+// Preimenuj i izlazni AAB (za bundleRelease) iz podrazumevanog "app-release.aab"
+// u "UltraKeyboard-1.1.aab" - AGP ovo ne nudi direktno kao za APK gore, pa se
+// posle bundleRelease-a napravi kopija sa lepim imenom (original ostaje i on,
+// za svaki slučaj).
+tasks.register("renameReleaseBundle") {
+    doLast {
+        val bundleDir = layout.buildDirectory.dir("outputs/bundle/release").get().asFile
+        val original = File(bundleDir, "app-release.aab")
+        val renamed = File(bundleDir, "UltraKeyboard-${android.defaultConfig.versionName}.aab")
+        if (original.exists()) {
+            original.copyTo(renamed, overwrite = true)
+        }
+    }
+}
+tasks.matching { it.name == "bundleRelease" }.configureEach {
+    finalizedBy("renameReleaseBundle")
 }
 
 dependencies {
