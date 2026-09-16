@@ -165,6 +165,10 @@ link.
 - The app icon is a simple placeholder (vector drawable) — replace it as you
   like with `app/src/main/res/drawable/ic_launcher.xml` or a proper mipmap
   set.
-- Not tested on a real device from this conversation (no access to the
-  Android SDK/emulator in this environment) — let me know what Android
-  Studio reports on the first build and we'll sort it out together.
+- Currently at v1.0.2-beta. Finished and published on GitHub; a Google Play
+  Store release is in progress (Play Console account created, currently
+  pending identity verification).
+
+## Author
+
+Demir Ajvazi — part of the [Ultra suite](https://github.com/demirajvazi10-max) of accessible software.
