@@ -172,3 +172,7 @@ link.
 ## Author
 
 Demir Ajvazi — part of the [Ultra suite](https://github.com/demirajvazi10-max) of accessible software.
+
+## License
+
+GPL-3.0 — see the [LICENSE](./LICENSE) file.
